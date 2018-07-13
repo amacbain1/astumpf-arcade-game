@@ -1,12 +1,30 @@
 //Player
 class Player {
   constructor(){
-    this.x = 0;
-    this.y = 0;
-    this.sprite = 'images/char-boy.png'
+    this.x = 205;
+    this.y = 400;
+    this.sprite = 'images/char-boy.png';
+    this.sideways = 101;
+    this.upDown = 83;
   }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+  handleInput(input) {
+    switch(input){
+      case 'left':
+      this.x -= this.sideways;
+      break;
+      case 'right':
+      this.x += this.sideways;
+      break;
+      case 'up':
+      this.y -= this.upDown;
+      break;
+      case 'down':
+      this.y += this.upDown;
+      break;
+    }
   }
 }
 const player = new Player();
