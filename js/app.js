@@ -13,16 +13,24 @@ class Player {
   handleInput(input) {
     switch(input){
       case 'left':
-      this.x -= this.sideways;
+        if (this.x >= this.sideways){
+          this.x -= this.sideways;
+        }
       break;
       case 'right':
-      this.x += this.sideways;
+        if (this.x <= this.sideways * 4){
+          this.x += this.sideways;
+        }
       break;
       case 'up':
-      this.y -= this.upDown;
+        if (this.y >=  0){
+          this.y -= this.upDown;
+        }
       break;
       case 'down':
-      this.y += this.upDown;
+        if (this.y <=  this.upDown * 4){
+          this.y += this.upDown;
+        }
       break;
     }
   }
