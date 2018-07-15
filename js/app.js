@@ -1,17 +1,17 @@
-class Sprite {
+class Populate {
   constructor(){
     this.x = 0;
     this.y = 0;
     this.sprite = '';
 
   }
-  //  render() {
-  //    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  //}
+    render() {
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
 }
 
 //Player
-class Player extends Sprite{
+class Player extends Populate {
   constructor(){
     super();
     this.x = 205;
@@ -21,9 +21,6 @@ class Player extends Sprite{
     this.upDown = 83;
   }
 
-  render() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  }
   handleInput(input) {
     switch(input){
       case 'left':
@@ -50,39 +47,44 @@ class Player extends Sprite{
   }
 }
 const player = new Player();
-let allEnemies = [];
+const allEnemies = [];
 
-class Enemy extends Sprite{
-  constructor(x, y, speed){
+class Enemy extends Populate{
+  constructor(x, y){
     super();
+    this.x = x;
+    this.y = y;
     this.sprite = 'images/enemy-bug.png';
   }
-  render() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  }
+
 }
-let enemy1 = new Enemy();
-    enemy2 = new Enemy();
-    enemy3 = new Enemy();
+const enemy1 = new Enemy();
+const enemy2 = new Enemy();
+const enemy3 = new Enemy();
 
-    allEnemies.push('enemy1', 'enemy2', 'enemy3');
+allEnemies.push('enemy1', 'enemy2', 'enemy3');
 
-//var Enemy = function() {
-    //this.sprite = 'images/enemy-bug.png';
-//};
+/*var Enemy = function() {
+    this.x = 0;
+    this.y = 0;
+    this.sprite = 'images/enemy-bug.png';
+};*/
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
+
+
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+
+
+/*Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+};*/
+
+
 
 // Now write your own player class
 // This class requires an update(), render() and
