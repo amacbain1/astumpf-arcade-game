@@ -1,12 +1,26 @@
-//Player
-class Player {
+class Sprite {
   constructor(){
+    this.x = 0;
+    this.y = 0;
+    this.sprite = '';
+
+  }
+  //  render() {
+  //    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  //}
+}
+
+//Player
+class Player extends Sprite{
+  constructor(){
+    super();
     this.x = 205;
     this.y = 400;
     this.sprite = 'images/char-boy.png';
     this.sideways = 101;
     this.upDown = 83;
   }
+
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
@@ -36,18 +50,26 @@ class Player {
   }
 }
 const player = new Player();
+let allEnemies = [];
 
-
-
-// Enemies our player must avoid
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+class Enemy extends Sprite{
+  constructor(x, y, speed){
+    super();
     this.sprite = 'images/enemy-bug.png';
-};
+  }
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+}
+let enemy1 = new Enemy();
+    enemy2 = new Enemy();
+    enemy3 = new Enemy();
+
+    allEnemies.push('enemy1', 'enemy2', 'enemy3');
+
+//var Enemy = function() {
+    //this.sprite = 'images/enemy-bug.png';
+//};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
