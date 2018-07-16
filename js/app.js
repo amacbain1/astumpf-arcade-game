@@ -2,11 +2,20 @@ class Populate {
   constructor(){
     this.x = 0;
     this.y = 0;
+    this.speed = 200;
     this.sprite = '';
 
   }
-    render() {
-      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+  update() {
+    if(this.x < this.sideways * 4){
+        this.x += this.speed * dt;
+    }
+    else{
+      this.x = 0;
+    }
   }
 }
 
@@ -50,19 +59,22 @@ const player = new Player();
 const allEnemies = [];
 
 class Enemy extends Populate{
-  constructor(x, y){
+  constructor(x, y, speed){
     super();
     this.x = x;
     this.y = y;
     this.sprite = 'images/enemy-bug.png';
   }
+  /*render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }*/
 
 }
-const enemy1 = new Enemy();
-const enemy2 = new Enemy();
-const enemy3 = new Enemy();
+const ladybug1 = new Enemy(101, 83, 200);
+const ladybug2 = new Enemy(404, 166, 300);
+const ladybug3 = new Enemy(0, 249, 200);
 
-allEnemies.push('enemy1', 'enemy2', 'enemy3');
+allEnemies.push(ladybug1, ladybug2, ladybug3);
 
 /*var Enemy = function() {
     this.x = 0;
@@ -72,11 +84,11 @@ allEnemies.push('enemy1', 'enemy2', 'enemy3');
 
 
 
-Enemy.prototype.update = function(dt) {
+/*Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-};
+};*/
 
 
 
