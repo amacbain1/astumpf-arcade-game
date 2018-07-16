@@ -1,35 +1,28 @@
+//Parent object for sprites
 class Populate {
   constructor(){
     this.x = 0;
     this.y = 0;
-    this.speed = 200;
+    this.speed = 0;
     this.sprite = '';
+    this.sideways = 101;
+    this.upDown = 83;
 
   }
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  update() {
-    if(this.x < this.sideways * 4){
-        this.x += this.speed * dt;
-    }
-    else{
-      this.x = 0;
-    }
-  }
 }
 
-//Player
+//Player class
 class Player extends Populate {
   constructor(){
     super();
     this.x = 205;
     this.y = 400;
     this.sprite = 'images/char-boy.png';
-    this.sideways = 101;
-    this.upDown = 83;
   }
-
+//key input for Player
   handleInput(input) {
     switch(input){
       case 'left':
@@ -56,45 +49,36 @@ class Player extends Populate {
   }
 }
 const player = new Player();
+//Array to hold Enemy objects
 const allEnemies = [];
-
+//Enemy class
 class Enemy extends Populate{
   constructor(x, y, speed){
     super();
     this.x = x;
     this.y = y;
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
   }
-  /*render() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-  }*/
-
+  //Smooth movement of Enemy objects across gameboard
+  update(dt) {
+    if(this.x < this.sideways * 5){
+        this.x += this.speed * dt;
+    }
+    else{
+      this.x = -100;
+    }
+  }
 }
-const ladybug1 = new Enemy(101, 83, 200);
-const ladybug2 = new Enemy(404, 166, 300);
-const ladybug3 = new Enemy(0, 249, 200);
+const enemy1 = new Enemy(101, 83, 150);
+const enemy2 = new Enemy(404, 166, 100);
+const enemy3 = new Enemy(0, 249, 300);
 
-allEnemies.push(ladybug1, ladybug2, ladybug3);
-
-/*var Enemy = function() {
-    this.x = 0;
-    this.y = 0;
-    this.sprite = 'images/enemy-bug.png';
-};*/
+allEnemies.push(enemy1, enemy2, enemy3);
 
 
 
-/*Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-};*/
 
-
-
-/*Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};*/
 
 
 

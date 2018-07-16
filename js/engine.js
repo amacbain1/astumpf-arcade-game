@@ -78,7 +78,7 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
-        //updateEntities(dt);
+        updateEntities(dt);
         // checkCollisions();
     }
 
@@ -88,13 +88,13 @@ var Engine = (function(global) {
      * player object. These update methods should focus purely on updating
      * the data/properties related to the object. Do your drawing in your
      * render methods.
-     */
-  /*  function updateEntities(dt) {
+***     */
+    function updateEntities(dt) {
       allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
-    }*/
+//        player.update();
+    }
 
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every
