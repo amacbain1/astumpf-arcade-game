@@ -7,11 +7,24 @@ class Populate {
     this.sprite = '';
     this.sideways = 101;
     this.upDown = 83;
-
   }
+
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+
+//check for collision-code provided by R. Bloomfield
+/*  checkCollisions(){
+    if(player.y === allEnemies.y){
+      if(player.x >= allEnemies.x - 0.5 && player.x <= allEnemies.x + 0.5){
+        return true;
+      }
+    }
+    else{
+      return false;
+    }
+    console.log('collide');
+  }*/
 }
 
 //Player class
@@ -19,7 +32,7 @@ class Player extends Populate {
   constructor(){
     super();
     this.x = 205;
-    this.y = 400;
+    this.y = 415;
     this.sprite = 'images/char-boy.png';
   }
 //key input for Player
@@ -46,9 +59,38 @@ class Player extends Populate {
         }
       break;
     }
+
+
   }
-}
+  update(){
+
+    for(let enemy of allEnemies) {
+      if (this.y === enemy.y && (enemy.x + enemy.sideways/2 > this.x && enemy.x < this.x + this.sideways/2)){
+        //console.log('collide');
+        this.reset();
+      }
+    }
+  }
+    reset(){
+      this.x = 205;
+      this.y = 415;
+    }
+  }
+  //check for collision-code provided by R. Bloomfield
+    /*checkCollisions(){
+
+        if(player.y === enemySprite.y && player.x >= enemySprite.x - 0.5 && player.x <= enemySprite.x + 0.5){
+              player.x = 205;
+              player.y = 400;
+
+        }
+
+      console.log('collide');
+    }*/
+
 const player = new Player();
+
+
 //Array to hold Enemy objects
 const allEnemies = [];
 //Enemy class
@@ -59,6 +101,7 @@ class Enemy extends Populate{
     this.y = y;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.enemySprite = this.sprite;
   }
   //Smooth movement of Enemy objects across gameboard
   update(dt) {
@@ -69,18 +112,40 @@ class Enemy extends Populate{
       this.x = -100;
     }
   }
+  //check for collision-code provided by R. Bloomfield
+/*    checkCollisions(enemy){
+        if(player.y === enemy.y && player.x >= enemy.x - 0.5 && player.x <= enemy.x + 0.5){
+            player.x = 205;
+            player.y = 400;
+
+        }
+
+      //console.log('collide');
+    } */
 }
 const enemy1 = new Enemy(101, 83, 150);
-const enemy2 = new Enemy(404, 166, 100);
+const enemy2 = new Enemy(404, 166, 350);
 const enemy3 = new Enemy(0, 249, 300);
+const enemy4 = new Enemy(0, 83, 100)
 
-allEnemies.push(enemy1, enemy2, enemy3);
-
-
-
+allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
 
-
+class Winner extends Populate{
+  constructor(x, y){
+    super();
+    this.sprite = 'images/Star.png';
+    this.x = x;
+    this.y = y;
+  }
+/*  if (player.x == 202 && player.y == 0){
+    winner(-101, -101);
+  }
+  else{
+    winner(202, 0);
+  }*/
+}
+const winner = new Winner(202, 0);
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -88,10 +153,6 @@ allEnemies.push(enemy1, enemy2, enemy3);
 
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
