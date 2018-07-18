@@ -7,7 +7,7 @@ class Populate {
     this.sprite = '';
     this.sideways = 101;
     this.upDown = 83;
-    this.win = false;
+    this.winAStar = false;
   }
 
   render() {
@@ -77,7 +77,7 @@ class Player extends Populate {
       }
     }
     if (winner.y === player.y && winner.x === player.x){
-      this.win = true;
+      this.winAStar = true;
       console.log(winner.x, player.x);
     }
   }
@@ -145,8 +145,8 @@ class Winner extends Populate{
     this.x = x;
     this.y = y;
   }
-  star(win){
-    if(player.win === true){
+  star(){
+    if(player.winAStar === true){
       this.sprite.remove();
       this.reset();
     }
