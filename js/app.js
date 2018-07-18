@@ -7,10 +7,16 @@ class Populate {
     this.sprite = '';
     this.sideways = 101;
     this.upDown = 83;
+    this.win = false;
   }
 
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+
+  reset(){
+    this.x = 202;
+    this.y = 415;
   }
 
 //check for collision-code provided by R. Bloomfield
@@ -31,7 +37,7 @@ class Populate {
 class Player extends Populate {
   constructor(){
     super();
-    this.x = 205;
+    this.x = 202;
     this.y = 415;
     this.sprite = 'images/char-boy.png';
   }
@@ -49,7 +55,7 @@ class Player extends Populate {
         }
       break;
       case 'up':
-        if (this.y >=  0){
+        if (this.y >=  83){
           this.y -= this.upDown;
         }
       break;
@@ -70,11 +76,12 @@ class Player extends Populate {
         this.reset();
       }
     }
-  }
-    reset(){
-      this.x = 205;
-      this.y = 415;
+    if (winner.y === player.y && winner.x === player.x){
+      this.win = true;
+      console.log(winner.x, player.x);
     }
+  }
+
   }
   //check for collision-code provided by R. Bloomfield
     /*checkCollisions(){
@@ -138,12 +145,13 @@ class Winner extends Populate{
     this.x = x;
     this.y = y;
   }
-/*  if (player.x == 202 && player.y == 0){
-    winner(-101, -101);
+  star(win){
+    if(player.win === true){
+      this.sprite.remove();
+      this.reset();
+    }
   }
-  else{
-    winner(202, 0);
-  }*/
+
 }
 const winner = new Winner(202, 0);
 
