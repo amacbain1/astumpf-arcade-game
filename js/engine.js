@@ -18,16 +18,28 @@ var Engine = (function(global) {
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
-    var doc = global.document,
+     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
-//        id;
+
+    //modal
+    const modal = document.querySelector('#modal');
+    const replay = document.querySelector('.reload');
 
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
+
+    replay.addEventListener('click', function() {
+      modal.classList.toggle('hide');
+      player.reset();
+      player.winAStar = false;
+      win.requestAnimationFrame(main);
+    })
+
+
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -57,7 +69,9 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
          if(player.winAStar === true) {
+           modal.style.display = 'block';
            win.cancelAnimationFrame;
+
          }
          else{
            win.requestAnimationFrame(main);

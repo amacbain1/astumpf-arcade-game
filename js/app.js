@@ -15,7 +15,7 @@ class Populate {
   }
 
   reset(){
-    this.x = 202;
+    this.x = 0;
     this.y = 415;
   }
 
@@ -37,7 +37,7 @@ class Populate {
 class Player extends Populate {
   constructor(){
     super();
-    this.x = 202;
+    this.x = 0;
     this.y = 415;
     this.sprite = 'images/char-boy.png';
   }
@@ -50,7 +50,7 @@ class Player extends Populate {
         }
       break;
       case 'right':
-        if (this.x <= this.sideways * 4){
+        if (this.x <= this.sideways * 3){
           this.x += this.sideways;
         }
       break;
@@ -72,13 +72,13 @@ class Player extends Populate {
 
     for(let enemy of allEnemies) {
       if (this.y === enemy.y && (enemy.x + enemy.sideways/2 > this.x && enemy.x < this.x + this.sideways/2)){
-        //console.log('collide');
+
         this.reset();
       }
     }
     if (winner.y === player.y && winner.x === player.x){
       this.winAStar = true;
-      console.log(winner.x, player.x);
+    //  winner.star();
     }
   }
 
@@ -145,12 +145,13 @@ class Winner extends Populate{
     this.x = x;
     this.y = y;
   }
-  star(){
+/*  star(){
     if(player.winAStar === true){
-      this.sprite.remove();
-      this.reset();
+      this.star(-101, 0);
+    //  player.reset();
+
     }
-  }
+  }*/
 
 }
 const winner = new Winner(202, 0);
