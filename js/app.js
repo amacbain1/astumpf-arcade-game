@@ -80,7 +80,10 @@ class Player extends Populate {
       this.winAStar = true;
     //  winner.star();
     }
-  }
+    if(this.winAStar === true){
+      winner.x = -101;
+      winner.y = 0;
+    }
 
   }
   //check for collision-code provided by R. Bloomfield
@@ -92,8 +95,8 @@ class Player extends Populate {
 
         }
 
-      console.log('collide');
-    }*/
+      console.log('collide');*/
+    }
 
 const player = new Player();
 
@@ -132,7 +135,7 @@ class Enemy extends Populate{
 }
 const enemy1 = new Enemy(101, 83, 150);
 const enemy2 = new Enemy(404, 166, 350);
-const enemy3 = new Enemy(0, 249, 300);
+const enemy3 = new Enemy(0, 249, 375);
 const enemy4 = new Enemy(0, 83, 100)
 
 allEnemies.push(enemy1, enemy2, enemy3, enemy4);
@@ -145,14 +148,15 @@ class Winner extends Populate{
     this.x = x;
     this.y = y;
   }
-/*  star(){
-    if(player.winAStar === true){
-      this.star(-101, 0);
-    //  player.reset();
 
-    }
-  }*/
+/*    if(player.winAStar = true){
+      this.x = 101;
+      this.y = 0;*/
 
+  reset(){
+    this.x = 202;
+    this.y = 0;
+  }
 }
 const winner = new Winner(202, 0);
 

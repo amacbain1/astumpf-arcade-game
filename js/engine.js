@@ -33,11 +33,16 @@ var Engine = (function(global) {
     doc.body.appendChild(canvas);
 
     replay.addEventListener('click', function() {
-      modal.classList.toggle('hide');
+    //  modal.classList.toggle('hide');
       player.reset();
+      winner.reset();
       player.winAStar = false;
       win.requestAnimationFrame(main);
     })
+    replay.onclick = function() {
+      modal.style.display = "none";;
+    }
+
 
 
 
@@ -75,6 +80,7 @@ var Engine = (function(global) {
          }
          else{
            win.requestAnimationFrame(main);
+
         }
     }
 
