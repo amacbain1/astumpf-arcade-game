@@ -18,20 +18,8 @@ class Populate {
     this.x = 0;
     this.y = 415;
   }
-
-//check for collision-code provided by R. Bloomfield
-/*  checkCollisions(){
-    if(player.y === allEnemies.y){
-      if(player.x >= allEnemies.x - 0.5 && player.x <= allEnemies.x + 0.5){
-        return true;
-      }
-    }
-    else{
-      return false;
-    }
-    console.log('collide');
-  }*/
 }
+
 
 //Player class
 class Player extends Populate {
@@ -65,38 +53,23 @@ class Player extends Populate {
         }
       break;
     }
-
-
   }
+  //updates player and sets condition for collision & win
   update(){
-
     for(let enemy of allEnemies) {
       if (this.y === enemy.y && (enemy.x + enemy.sideways/2 > this.x && enemy.x < this.x + this.sideways/2)){
-
         this.reset();
       }
     }
     if (winner.y === player.y && winner.x === player.x){
       this.winAStar = true;
-    //  winner.star();
     }
     if(this.winAStar === true){
       winner.x = -101;
       winner.y = 0;
     }
-
-  }
-  //check for collision-code provided by R. Bloomfield
-    /*checkCollisions(){
-
-        if(player.y === enemySprite.y && player.x >= enemySprite.x - 0.5 && player.x <= enemySprite.x + 0.5){
-              player.x = 205;
-              player.y = 400;
-
-        }
-
-      console.log('collide');*/
     }
+  }
 
 const player = new Player();
 
@@ -122,16 +95,6 @@ class Enemy extends Populate{
       this.x = -100;
     }
   }
-  //check for collision-code provided by R. Bloomfield
-/*    checkCollisions(enemy){
-        if(player.y === enemy.y && player.x >= enemy.x - 0.5 && player.x <= enemy.x + 0.5){
-            player.x = 205;
-            player.y = 400;
-
-        }
-
-      //console.log('collide');
-    } */
 }
 const enemy1 = new Enemy(101, 83, 150);
 const enemy2 = new Enemy(404, 166, 350);
@@ -140,7 +103,7 @@ const enemy4 = new Enemy(0, 83, 100)
 
 allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
-
+//Trophy for game win
 class Winner extends Populate{
   constructor(x, y){
     super();
@@ -149,10 +112,6 @@ class Winner extends Populate{
     this.y = y;
   }
 
-/*    if(player.winAStar = true){
-      this.x = 101;
-      this.y = 0;*/
-
   reset(){
     this.x = 202;
     this.y = 0;
@@ -160,14 +119,6 @@ class Winner extends Populate{
 }
 const winner = new Winner(202, 0);
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
-
-// Now instantiate your objects.
-
-// This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
