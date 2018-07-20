@@ -1,3 +1,9 @@
+/*Attributions:
+    Rodrick Bloomfield's Zoom video and walkthrough
+    Matthew Cranford's Blogs
+*/
+
+
 //Parent object for sprites
 class Populate {
   constructor(){
