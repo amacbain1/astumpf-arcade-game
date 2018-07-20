@@ -151,7 +151,7 @@ var Engine = (function(global) {
         winner.render();
     }
 
-    /
+    
     function reset() {
         // noop
     }
