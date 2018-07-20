@@ -1,6 +1,36 @@
-frontend-nanodegree-arcade-game
-===============================
+#Ladybug Frenzy! Arcade Game Clone
+##Udacity FEND Project 3
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+* [Object of the Game](#Object of the Game)
+* [How to Play](#How to Play)
+* [Contributing](#contributing)
+* [Dependencies](#dependencies)
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+
+##Object of the Game
+
+Lead your tiny hero across the road to safety and
+collect the magic star to win the game. But watch out
+for the giant bugs! They will knock you off the road.
+
+##How to Play
+
+Use your keyboards arrow keys to control the hero's
+movements.
+To play online, click on this link:
+[]
+or, alternatively,
+clone the link on [GitHub](https://github.com/amacbain1/astumpf-arcade-game)
+and open the file in your favorite browser.
+
+##Contributing
+
+Much of the code in engine.js was provided by [Udacity](https://www.udacity.com/)
+and all of the resources.js. A small portion of HTML, CSS and
+JavaScript in the remaining files was also provided by [Udacity](https://www.udacity.com/)
+Helpful tutorials used in writing the code were provided by
+Matthew Cranford and Rodrick Bloomfield.
+
+##Dependencies
+
+This game was built using HTML Canvas, CSS and JavaScript.
